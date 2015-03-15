@@ -16,11 +16,13 @@ public class QueueTest {
 
 
     @Test
-    public void addingMultipleItemsThenRemovingOneWillReturnFirstItem() throws Exception {
+    public void addingThreeItemsThenRemovingTwoWillReturnItemOneThenTwo() throws Exception {
         Queue queue = new Queue();
         queue.add("Item 1");
         queue.add("Item 2");
         queue.add("Item 3");
         assertThat(queue.remove(), is("Item 1"));
+        assertThat(queue.remove(), is("Item 2"));
     }
+
 }
