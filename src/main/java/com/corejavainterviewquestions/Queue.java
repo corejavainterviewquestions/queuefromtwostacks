@@ -12,14 +12,15 @@ public class Queue {
     }
 
     public String remove() {
-        while(!stackOne.isEmpty()) {
-            stackTwo.push(stackOne.pop());
-        }
+        swapStacks(stackOne, stackTwo);
+
         String result = stackTwo.pop();
 
-        while(!stackTwo.isEmpty()) {
-            stackOne.push(stackTwo.pop());
-        }
+        swapStacks(stackTwo, stackOne);
         return result;
+    }
+
+    private void swapStacks(Stack<String> stackOne, Stack<String> stackTwo) {
+        while(!stackOne.isEmpty()) stackTwo.push(stackOne.pop());
     }
 }
