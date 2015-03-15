@@ -3,6 +3,8 @@ package com.corejavainterviewquestions;
 
 import org.junit.Test;
 
+import java.util.NoSuchElementException;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -24,5 +26,12 @@ public class QueueTest {
         assertThat(queue.remove(), is("Item 1"));
         assertThat(queue.remove(), is("Item 2"));
     }
+
+    @Test(expected = NoSuchElementException.class)
+    public void throwsErrorIfRemoveCalledOnEmptyQueue(){
+        Queue queue = new Queue();
+        queue.remove();
+    }
+
 
 }

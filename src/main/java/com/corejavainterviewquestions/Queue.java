@@ -1,6 +1,7 @@
 package com.corejavainterviewquestions;
 
 
+import java.util.NoSuchElementException;
 import java.util.Stack;
 
 public class Queue {
@@ -12,10 +13,11 @@ public class Queue {
     }
 
     public String remove() {
+        if(stackOne.isEmpty())
+            throw new NoSuchElementException("The Queue Is Empty");
+
         swapStacks(stackOne, stackTwo);
-
         String result = stackTwo.pop();
-
         swapStacks(stackTwo, stackOne);
         return result;
     }
