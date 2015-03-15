@@ -13,16 +13,13 @@ public class Queue {
     }
 
     public String remove() {
-        if(stackOne.isEmpty())
+        if(stackOne.isEmpty() && stackTwo.isEmpty())
             throw new NoSuchElementException("The Queue Is Empty");
 
-        swapStacks(stackOne, stackTwo);
-        String result = stackTwo.pop();
-        swapStacks(stackTwo, stackOne);
-        return result;
+        if(stackTwo.isEmpty())
+            while(!stackOne.isEmpty()) stackTwo.push(stackOne.pop());
+
+        return stackTwo.pop();
     }
 
-    private void swapStacks(Stack<String> stackOne, Stack<String> stackTwo) {
-        while(!stackOne.isEmpty()) stackTwo.push(stackOne.pop());
-    }
 }

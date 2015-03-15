@@ -34,4 +34,22 @@ public class QueueTest {
     }
 
 
+    @Test
+    public void multipleAddsAndRemovesInCorrectOrder() throws Exception {
+        Queue queue = new Queue();
+        queue.add("Item 1");
+        queue.add("Item 2");
+        assertThat(queue.remove(), is("Item 1"));
+
+        queue.add("Item 3");
+
+        assertThat(queue.remove(), is("Item 2"));
+        queue.add("Item 4");
+        queue.add("Item 5");
+        queue.add("Item 6");
+
+        assertThat(queue.remove(), is("Item 3"));
+        assertThat(queue.remove(), is("Item 4"));
+    }
+
 }
